@@ -1,8 +1,8 @@
 
-public class RoboticCat extends VirtualPet {
+public class RoboticCat extends RoboticPet {
 
-	public RoboticCat(String petTag, String name, int happiness, int food, int cleanliness, int health) {
-		super (petTag, name, happiness, food, cleanliness, health);
+	public RoboticCat(String petTag, String name, int happiness, int food, int cleanliness, int health, boolean broken) {
+		super (petTag, name, happiness, food, cleanliness, health, broken);
 
 	}
 

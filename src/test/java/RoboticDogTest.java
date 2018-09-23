@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class RoboticDogTest {
-	RoboticDog underTest = new RoboticDog("1", "RobotDogName", 1, 1, 10, 0);
+	RoboticDog underTest = new RoboticDog("1", "RobotDogName", 1, 1, 10, 0, false);
 
 	@Test
 	public void shouldBeAbleToGetDogProperties() {

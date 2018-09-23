@@ -1,10 +1,10 @@
 
-public class RoboticDog extends VirtualPet {
+public class RoboticDog extends RoboticPet {
 
 
 
-	public RoboticDog(String petTag, String name, int happiness, int food, int cleanliness, int health) {
-		super (petTag, name, happiness, food, cleanliness, health);
+	public RoboticDog(String petTag, String name, int happiness, int food, int cleanliness, int health, boolean broken) {
+		super (petTag, name, happiness, food, cleanliness, health, broken);
 	}
 		public void walk() {
 			attend();
