@@ -27,7 +27,11 @@ public class VirtualPetShelter {
 	}
 
 	public void oilAllRobots() {
-		// TODO Auto-generated method stub
+		for(VirtualPet shelteredPets: shelteredPets.values()) {
+			if(shelteredPets instanceof RoboticPet){
+				shelteredPets.clean();
+			}
+		}
 		
 	}
 

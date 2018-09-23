@@ -2,14 +2,16 @@
 public class OrganicPet extends VirtualPet {
 
 	public int water;
+	private int waste;
 
 	public OrganicPet() {
 
 	}
 
-	public OrganicPet(String petTag, String name, int happiness, int food, int cleanliness, int health, int water) {
+	public OrganicPet(String petTag, String name, int happiness, int food, int cleanliness, int health, int water, int waste) {
 		super(petTag, name, happiness, food, cleanliness, health);
 		this.water = water;
+		this.waste = waste;
 	}
 
 	public int getWater() {
@@ -21,6 +23,10 @@ public class OrganicPet extends VirtualPet {
 		setHealth();
 	
 	}
+	public int getWaste() {
+		return waste;
+	}
+
 
 	@Override
 	public int setHealth() {

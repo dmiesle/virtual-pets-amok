@@ -1,4 +1,3 @@
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -15,8 +14,8 @@ public class VirtualPetShelterTest {
 	VirtualPetShelter underTest = new VirtualPetShelter();
 	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 1, 10, 0, false);
 	RoboticCat testRobotCat = new RoboticCat("2", "RobotCatName", 1, 1, 10, 0, false);
-	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 10, 0, 0);
-	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 10, 0, 0);
+	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 10, 0, 0, 1);
+	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 10, 0, 0, 1);
 
 	@Test
 	public void shouldAddRoboticDogToShelter() {
@@ -59,6 +58,7 @@ public class VirtualPetShelterTest {
 		assertThat(roboticPets, containsInAnyOrder(testRobotDog, testRobotCat));
 
 	}
+
 	@Test
 	public void shouldFindAllOrganicPets() {
 		underTest.intake(testRobotDog);
@@ -77,6 +77,9 @@ public class VirtualPetShelterTest {
 		underTest.intake(testRobotCat);
 		underTest.intake(testOrganicCat);
 		underTest.oilAllRobots();
+		assertThat(testRobotDog.getCleanliness(), is(11));
+		assertThat(testRobotCat.getCleanliness(), is(11));
+		assertThat(testOrganicDog.getCleanliness(), is(10));
 	}
 
 }
