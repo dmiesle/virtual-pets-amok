@@ -1,14 +1,16 @@
 
-public class RoboticDog extends Pet {
+public class RoboticDog extends VirtualPet {
 
-	public RoboticDog(String petTag, String name, int boredom, int food, int water, int cleanliness, int health) {
-		this.petTag = petTag;
-		this.setName(name);
-		this.boredom = boredom;
-		this.food = food;
-		this.water = water;
-		this.cleanliness = cleanliness;
-		this.health = health;
+
+
+	public RoboticDog(String petTag, String name, int happiness, int food, int cleanliness, int health) {
+		super (petTag, name, happiness, food, cleanliness, health);
+	}
+		public void walk() {
+			attend();
+			cleanliness = cleanliness -1;
+			food = food -1;
+			health = food + happiness + cleanliness;
 	}
 
 	
