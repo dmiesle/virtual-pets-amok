@@ -82,4 +82,25 @@ public class VirtualPetShelterTest {
 		assertThat(testOrganicDog.getCleanliness(), is(10));
 	}
 
+	@Test
+	public void shouldBeAbleToWalkAllDogs() {
+		underTest.intake(testRobotDog);
+		underTest.intake(testOrganicDog);
+		underTest.intake(testRobotCat);
+		underTest.walkAllDogs();
+		assertThat(testRobotDog.getHappiness(), is(2));
+		assertThat(testOrganicDog.getHappiness(), is(2));
+		assertThat(testRobotCat.getHappiness(), is(1));
+
+	}
+	@Test
+	public void shouldBeAbleToWaterAllOrganicPets() {
+		underTest.intake(testRobotDog);
+		underTest.intake(testOrganicDog);
+		underTest.intake(testRobotCat);
+		underTest.waterAllOrganics();
+		assertThat(testOrganicDog.getWater(), is(1));
+
+	}
+
 }

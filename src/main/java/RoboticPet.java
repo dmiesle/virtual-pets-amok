@@ -9,4 +9,16 @@ public class RoboticPet extends VirtualPet {
 		this.broken = broken;
 	}
 
+	public Object getBroken() {
+		return broken;
+	}
+
+	public void breakdown() {
+		broken = true;
+	}
+
+	public void repair() {
+		broken = false;
+	}
+	
 }

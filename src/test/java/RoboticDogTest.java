@@ -58,5 +58,20 @@ public class RoboticDogTest {
 		assertThat (underTest.getCleanliness(), is(9));
 		assertThat (underTest.getFood(), is (0));
 	}
+	
+	@Test
+	public void shouldBreakARoboticpet() {
+		underTest.breakdown();
+		assertThat(underTest.getBroken(), is (true));
+		
+	}
+	
+	@Test
+	public void shouldRepairABrokenPet() {
+		underTest.breakdown();
+		assertThat(underTest.getBroken(), is (true));
+		underTest.repair();
+		assertThat(underTest.getBroken(), is (false));
+	}
 
 }

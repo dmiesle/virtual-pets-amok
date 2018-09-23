@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class OrganicDogTest {
-	OrganicDog underTest = new OrganicDog("1", "OrgnanicDogName", 1, 1, 10, 0, 3);
+	OrganicDog underTest = new OrganicDog("1", "OrgnanicDogName", 1, 1, 10, 0, 3, 0);
 
 	@Test
 	public void shouldBeAbleToGetDogProperties() {
@@ -27,22 +27,24 @@ public class OrganicDogTest {
 	@Test
 	public void shouldBeAbleToGiveDogWater() {
 		underTest.water();
-		assertThat (underTest.getWater(), is(4));
-		
+		assertThat(underTest.getWater(), is(4));
+
 	}
+
 	@Test
 	public void shouldBeAbleToGiveDogWaterAndIncreaseHealth() {
 		underTest.water();
-		assertThat (underTest.getHealth(), is(16));
-		
+		assertThat(underTest.getHealth(), is(16));
+
 	}
+
 	@Test
 	public void shouldBeAbleToWalkDogAndIncreaseHappinessLevelAndCleanliness() {
 		underTest.walk();
-		assertThat (underTest.getHealth(), is(15));
-		assertThat (underTest.getCleanliness(), is(11));
-		assertThat (underTest.getFood(), is (0));
-		assertThat (underTest.getWater(), is(2));
+		assertThat(underTest.getHealth(), is(15));
+		assertThat(underTest.getCleanliness(), is(11));
+		assertThat(underTest.getFood(), is(0));
+		assertThat(underTest.getWater(), is(2));
 	}
 
 }

@@ -62,4 +62,22 @@ public class VirtualPetShelter {
 		
 	}
 
+	public void walkAllDogs() {
+		for(VirtualPet shelteredPets: shelteredPets.values()) {
+			if(shelteredPets instanceof Dog){
+				((Dog) shelteredPets).walk();
+			}
+		}
+		
+	}
+
+	public void waterAllOrganics() {
+		for(VirtualPet shelteredPets: shelteredPets.values()) {
+			if(shelteredPets instanceof OrganicPet){
+				((OrganicPet) shelteredPets).water();
+			}
+		}
+		
+	}
+
 }
