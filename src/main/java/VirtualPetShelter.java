@@ -80,4 +80,13 @@ public class VirtualPetShelter {
 		
 	}
 
+	public void cleanDogCages() {
+		for(VirtualPet shelteredPets: shelteredPets.values()) {
+			if(shelteredPets instanceof OrganicDog){
+				((OrganicDog) shelteredPets).clean();
+			}
+		}
+	}
+
+
 }

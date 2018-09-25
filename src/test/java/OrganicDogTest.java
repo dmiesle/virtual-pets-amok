@@ -46,5 +46,21 @@ public class OrganicDogTest {
 		assertThat(underTest.getFood(), is(0));
 		assertThat(underTest.getWater(), is(2));
 	}
+	
+	@Test
+	public void shouldIncreaseWasteLevelTo2() {
+		underTest.increaseWaste();
+		assertThat(underTest.getWaste(), is (1));
+		assertThat(underTest.getFood(), is (0));
+		assertThat(underTest.getWater(), is (2));
+	}
+	
+	@Test
+	public void shouldBeAbleToEliminateWaste() {
+		underTest.increaseWaste();
+		assertThat(underTest.getWaste(), is (1));
+		underTest.eliminateWaste();
+		assertThat(underTest.getWaste(), is (0));
+	}
 
 }

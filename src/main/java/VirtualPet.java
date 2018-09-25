@@ -7,17 +7,19 @@ public class VirtualPet {
 	protected int food;
 	protected int cleanliness;
 	protected int health;
+	private String petDescription;
 
 	public VirtualPet() {
 	}
 
-	public VirtualPet(String petTag, String name, int happiness, int food, int cleanliness, int health) {
+	public VirtualPet(String petTag, String name, int happiness, int food, int cleanliness, int health, String petDescription) {
 		this.petTag = petTag;
 		this.name = name;
 		this.happiness = happiness;
 		this.food = food;
 		this.cleanliness = cleanliness;
 		this.health = health;
+		this.petDescription = petDescription;
 
 	}
 
@@ -54,17 +56,17 @@ public class VirtualPet {
 	}
 
 	public void attend() {
-		happiness = happiness + 1;
+		happiness += 1;
 		setHealth();
 	}
 
 	public void feed() {
-		food = food + 1;
+		food += 1;
 		setHealth();
 	}
 
 	public void clean() {
-		cleanliness = cleanliness + 1;
+		cleanliness = 10;
 		setHealth();
 	}
 

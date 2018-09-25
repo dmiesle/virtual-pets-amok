@@ -12,10 +12,11 @@ import org.junit.Test;
 public class VirtualPetShelterTest {
 
 	VirtualPetShelter underTest = new VirtualPetShelter();
-	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 1, 10, 0, false);
-	RoboticCat testRobotCat = new RoboticCat("2", "RobotCatName", 1, 1, 10, 0, false);
-	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 10, 0, 0, 1);
-	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 10, 0, 0, 1);
+	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 1, 9, 0, false);
+	RoboticCat testRobotCat = new RoboticCat("2", "RobotCatName", 1, 1, 9, 0, false);
+	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 9, 0, 0, 1);
+	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 9, 0, 0, 1);
+	ShelterResources testResources = new ShelterResources();
 
 	@Test
 	public void shouldAddRoboticDogToShelter() {
@@ -77,9 +78,9 @@ public class VirtualPetShelterTest {
 		underTest.intake(testRobotCat);
 		underTest.intake(testOrganicCat);
 		underTest.oilAllRobots();
-		assertThat(testRobotDog.getCleanliness(), is(11));
-		assertThat(testRobotCat.getCleanliness(), is(11));
-		assertThat(testOrganicDog.getCleanliness(), is(10));
+		assertThat(testRobotDog.getCleanliness(), is(10));
+		assertThat(testRobotCat.getCleanliness(), is(10));
+		assertThat(testOrganicDog.getCleanliness(), is(9));
 	}
 
 	@Test
@@ -102,5 +103,29 @@ public class VirtualPetShelterTest {
 		assertThat(testOrganicDog.getWater(), is(1));
 
 	}
+	@Test
+	public void shouldBeAbleToCleanAllDogCages() {
+		underTest.intake(testRobotDog);
+		underTest.intake(testOrganicDog);
+		underTest.cleanDogCages();
+		assertThat(testOrganicDog.getCleanliness(), is(10));
+		assertThat(testRobotDog.getCleanliness(), is(9));
+		
+	}
+	@Test
+	public void shouldBeAbleToCleanShelterLitterBox() {
+		testResources.emptyLitterBox();
+		assertThat(testResources.getBoxLevel(), is (0));
+	}
+	
+	@Test
+	public void organicCatsShouldBeAbleToUseLitterBox() {
+		int deposit = testOrganicCat.getWaste();
+		testResources.depositInLitterBox(deposit);
+		testOrganicCat.eliminateWaste();
+		assertThat (testOrganicCat.getWaste(), is (0));
+		assertThat (testResources.getBoxLevel(), is(1));
+	}
+		
 
 }
