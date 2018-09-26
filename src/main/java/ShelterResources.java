@@ -26,6 +26,11 @@ public class ShelterResources {
 		tickCount += 1;
 		
 	}
+	
+	public void setTickCountBase() {
+		tickCount =0;
+		
+	}
 	public int getTickCount() {
 		return tickCount;
 	}

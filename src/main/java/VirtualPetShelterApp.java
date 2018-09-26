@@ -26,11 +26,11 @@ public class VirtualPetShelterApp {
 		Collection<VirtualPet> pets = myShelter.getAllPets();
 
 		System.out.println("Congratulations! You just openned a pet shelter. Here are your pets:");
-		System.out.println("Name\t|Hunger\t\t|Happiness");
+		System.out.println("Name\t|Hunger\t|Happiness");
 		System.out.println("--------|---------------|---------------");
 		for (VirtualPet pet : pets) {
 			System.out.println(pet.getName() + "\t|" + myStatus.getHungerStatus(pet.getFood()) + "\t\t|"
-					+ myStatus.getEntertainmentStatus(pet.getHappiness()));
+					+ myStatus.getHappinessStatus(pet.getHappiness()));
 		}
 		System.out.println("\n\nWhat would you like to do?\n");
 		do {
@@ -45,11 +45,11 @@ public class VirtualPetShelterApp {
 			menuOption = input.nextLine();
 			if (menuOption.equals("1")) {
 				System.out.println("Congratulations! You just openned a pet shelter. Here are your pets:");
-				System.out.println("Name\t|Hunger\t\t|Happiness");
+				System.out.println("Name\t|Hunger\t|Happiness");
 				System.out.println("--------|---------------|---------------");
 				for (VirtualPet pet : pets) {
 					System.out.println(pet.getName() + "\t|" + myStatus.getHungerStatus(pet.getFood()) + "\t|"
-							+ myStatus.getEntertainmentStatus(pet.getHappiness()));
+							+ myStatus.getHappinessStatus(pet.getHappiness()));
 				}
 			}
 
@@ -101,18 +101,21 @@ public class VirtualPetShelterApp {
 			else if (menuOption.equals("5")) {
 				System.out.println("Provide a name for the pet you want to admit to the shelter");
 				String petNameChoice = input.nextLine();
+				System.out.println("Enter a description for the new pet:");
+				String petDescriptionChoice = input.nextLine();
 				System.out.println(
 						"What type of pet would you like to adopt: Robotic Dog, Robotic Cat, Organic Dog, or Organic Cat");
 				String petTypeChoice = input.nextLine();
 				if (petTypeChoice.equalsIgnoreCase("Robotic Dog")) {
-					petIntake = new RoboticDog(nextKey, petNameChoice, 5, 3, 10, 18, "New pet", false);
+					petIntake = new RoboticDog(nextKey, petNameChoice, 5, 3, 10, 18, petDescriptionChoice, false);
 				} else if (petTypeChoice.equalsIgnoreCase("Robotic Cat")) {
-					petIntake = new RoboticCat(nextKey, petNameChoice, 5, 3, 10, 18, "New pet", false);
+					petIntake = new RoboticCat(nextKey, petNameChoice, 5, 3, 10, 18, petDescriptionChoice, false);
 				} else if (petTypeChoice.equalsIgnoreCase("Organic Dog")) {
-					petIntake = new OrganicDog(nextKey, petNameChoice, 5, 3, 10, 18, "New pet", 3, 0);
+					petIntake = new OrganicDog(nextKey, petNameChoice, 5, 3, 10, 18, petDescriptionChoice, 3, 0);
 				} else if (petTypeChoice.equalsIgnoreCase("Organic Cat")) {
-					petIntake = new OrganicCat(nextKey, petNameChoice, 5, 3, 10, 18, "New pet", 3, 0);
+					petIntake = new OrganicCat(nextKey, petNameChoice, 5, 3, 10, 18, petDescriptionChoice, 3, 0);
 				}
+
 				nextKey += 1;
 				myShelter.intake(petIntake);
 			} else if (menuOption.equals("7")) {
@@ -128,11 +131,11 @@ public class VirtualPetShelterApp {
 				for (VirtualPet pet : pets) {
 					if (pet.getFood() < 0 || pet.getHappiness() < 0 || pet.getCleanliness() < 0
 							|| pet.getHealth() < 10) {
-						String deathNotice = ("Your pet " + pet.getName() + " has died");
+						String deathNotice = ("Your pet " + pet.getName() + " has died.");
 						myShelter.adopt(pet.getPetTag());
-						;
 						System.out.println(deathNotice);
 					}
+					myResource.setTickCountBase();
 				}
 				myResource.setTickCount();
 

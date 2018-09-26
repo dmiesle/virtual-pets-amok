@@ -11,10 +11,10 @@ public class PetStatus {
 
 	}
 
-	List<String> entertainments = Arrays.asList("Bored\t", "Restless", "Happy\t", "Loved\t", "Overstimulated");
+	List<String> happiness = Arrays.asList("Bored\t", "Restless", "Happy\t", "Loved\t", "Overstimulated");
 
-	public String getEntertainmentStatus(int entertained) {
-		return entertainments.get(entertained);
+	public String getHappinessStatus(int entertained) {
+		return happiness.get(entertained);
 
 	}
 

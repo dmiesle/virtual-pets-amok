@@ -62,12 +62,14 @@ public class VirtualPet {
 	}
 
 	public void attend() {
-		happiness += 1;
+		if (happiness < 4) {
+		happiness += 1;}
 		setHealth();
 	}
 
 	public void feed() {
-		food += 1;
+		if (food <10) {
+		food += 1;}
 		setHealth();
 	}
 

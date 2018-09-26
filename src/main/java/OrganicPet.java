@@ -19,8 +19,9 @@ public class OrganicPet extends VirtualPet {
 	}
 
 	public void water() {
-		water = water + 1;
-		setHealth();
+		if (water < 5) {
+		water = water + 1;}
+			setHealth();
 	
 	}
 	public int getWaste() {
