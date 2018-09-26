@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 
 public class PetStatus {
-	List<String> hungers = Arrays.asList("Dead\t", "Starving", "Hangry", "Hungry", "Peckish", "Satisified", "Content",
+	List<String> hungers = Arrays.asList("Dead\t", "Starving", "Hangry\t", "Hungry\t", "Peckish", "Satisified", "Content",
 			"Full\t", "Stuffed", "Bloated", "Lethargic");
 
 	public String getHungerStatus(int foodLevel) {

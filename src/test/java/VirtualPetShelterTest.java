@@ -12,11 +12,12 @@ import org.junit.Test;
 public class VirtualPetShelterTest {
 
 	VirtualPetShelter underTest = new VirtualPetShelter();
-	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 1, 9, 0,"description1", false);
+	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 2, 9, 0,"description1", false);
 	RoboticCat testRobotCat = new RoboticCat("2", "RobotCatName", 1, 1, 9, 0, "description2",false);
 	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 9, 0,"description3", 0, 1);
 	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 9, 0,"description4", 0, 1);
 	ShelterResources testResources = new ShelterResources(0);
+	PetStatus testStatus = new PetStatus();
 
 	@Test
 	public void shouldAddRoboticDogToShelter() {
@@ -126,6 +127,16 @@ public class VirtualPetShelterTest {
 		assertThat (testOrganicCat.getWaste(), is (0));
 		assertThat (testResources.getBoxLevel(), is(1));
 	}
-		
-
+	@Test
+	public void shouldReturnFoodLevelof5() {
+		underTest.intake(testRobotDog);
+		VirtualPet foundPet = underTest.findPet("1");
+		assertThat (foundPet.getFood(), is(2));
+	}
+	@Test
+	public void shouldReturnhungerLevelOfHangry() {
+		underTest.intake(testRobotDog);
+		VirtualPet foundPet = underTest.findPet("1");
+		assertThat (testStatus.getHungerStatus(foundPet.getFood()), is("Hangry"));
+	}
 }

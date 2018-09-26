@@ -1,6 +1,4 @@
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class VirtualPetShelterApp {
@@ -15,10 +13,10 @@ public class VirtualPetShelterApp {
 		ShelterResources myResource = new ShelterResources(0);
 		String menuOption;
 
-		RoboticDog pet1 = new RoboticDog("1234", "Bob", 5, 3, 10, 18, "A bit fluffy, but seems kind hearted", false);
-		RoboticCat pet2 = new RoboticCat("1235", "Sally", 5, 3, 10, 18, "With wide eyes, constantly moving", false);
-		OrganicCat pet3 = new OrganicCat("1236", "Fluffy", 5, 3, 10, 18, "Your run of the mill cat.", 3, 0);
-		OrganicDog pet4 = new OrganicDog("1237", "Rolf", 5, 3, 10, 18, "A giant furry dog, who can play the piano", 3,
+		RoboticDog pet1 = new RoboticDog("1234", "Bob", 3, 3, 10, 18, "A bit fluffy, but seems kind hearted", false);
+		RoboticCat pet2 = new RoboticCat("1235", "Sally", 3, 3, 10, 18, "With wide eyes, constantly moving", false);
+		OrganicCat pet3 = new OrganicCat("1236", "Fluffy", 3, 3, 10, 18, "Your run of the mill cat.", 3, 0);
+		OrganicDog pet4 = new OrganicDog("1237", "Rolf", 3, 3, 10, 18, "A giant furry dog, who can play the piano", 3,
 				0);
 
 		myShelter.intake(pet1);
@@ -31,7 +29,7 @@ public class VirtualPetShelterApp {
 		System.out.println("Name\t|Hunger\t\t|Happiness");
 		System.out.println("--------|---------------|---------------");
 		for (VirtualPet pet : pets) {
-			System.out.println(pet.getName() + "\t|" + myStatus.getHungerStatus(pet.getFood()) + "\t|"
+			System.out.println(pet.getName() + "\t|" + myStatus.getHungerStatus(pet.getFood()) + "\t\t|"
 					+ myStatus.getEntertainmentStatus(pet.getHappiness()));
 		}
 		System.out.println("\n\nWhat would you like to do?\n");
@@ -117,8 +115,7 @@ public class VirtualPetShelterApp {
 				}
 				nextKey += 1;
 				myShelter.intake(petIntake);
-			}
-			else if (menuOption.equals("7")) {
+			} else if (menuOption.equals("7")) {
 				myShelter.tickAll();
 			} else {
 				System.out.println(
@@ -127,12 +124,21 @@ public class VirtualPetShelterApp {
 			}
 			System.out.println("What else do you want to do?");
 			if (myResource.getTickCount() == 5) {
-			myShelter.tickAll();
+				myShelter.tickAll();
+				for (VirtualPet pet : pets) {
+					if (pet.getFood() < 0 || pet.getHappiness() < 0 || pet.getCleanliness() < 0
+							|| pet.getHealth() < 10) {
+						String deathNotice = ("Your pet " + pet.getName() + " has died");
+						myShelter.adopt(pet.getPetTag());
+						;
+						System.out.println(deathNotice);
+					}
+				}
+				myResource.setTickCount();
+
 			}
-			myResource.setTickCount();
 
 		} while (menuOption != "8");
 		input.close();
 	}
-
 }

@@ -12,7 +12,8 @@ public class VirtualPet {
 	public VirtualPet() {
 	}
 
-	public VirtualPet(String petTag, String name, int happiness, int food, int cleanliness, int health, String petDescription) {
+	public VirtualPet(String petTag, String name, int happiness, int food, int cleanliness, int health,
+			String petDescription) {
 		this.petTag = petTag;
 		this.name = name;
 		this.happiness = happiness;
@@ -46,15 +47,16 @@ public class VirtualPet {
 	public int getHealth() {
 		return health;
 	}
-	
 
 	public String getPetDescription() {
 		return petDescription;
 	}
+
 	public int setHealth() {
 		health = food + happiness + cleanliness;
 		return getHealth();
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -77,6 +79,6 @@ public class VirtualPet {
 	public void tick() {
 		cleanliness -= 1;
 		food -= 1;
-		happiness -=1;
+		happiness -= 1;
 	}
 }
