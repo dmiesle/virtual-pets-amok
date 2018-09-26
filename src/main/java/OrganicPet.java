@@ -45,5 +45,11 @@ public class OrganicPet extends VirtualPet {
 		health = food + happiness + cleanliness + water;
 		return getHealth();
 	}
-
+	@Override
+	public void tick() {
+		cleanliness -= 1;
+		food -= 1;
+		happiness -=1;
+		water -= 1;
+	}
 }

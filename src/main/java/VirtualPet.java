@@ -23,10 +23,6 @@ public class VirtualPet {
 
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -50,9 +46,17 @@ public class VirtualPet {
 	public int getHealth() {
 		return health;
 	}
+	
+
+	public String getPetDescription() {
+		return petDescription;
+	}
 	public int setHealth() {
 		health = food + happiness + cleanliness;
 		return getHealth();
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void attend() {
@@ -70,4 +74,9 @@ public class VirtualPet {
 		setHealth();
 	}
 
+	public void tick() {
+		cleanliness -= 1;
+		food -= 1;
+		happiness -=1;
+	}
 }

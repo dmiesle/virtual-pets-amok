@@ -2,6 +2,7 @@
 public class ShelterResources {
 
 	public int litterBox;
+	private int tickCount;
 
 	public ShelterResources(int litterBox) {
 		this.litterBox = litterBox;
@@ -19,6 +20,14 @@ public class ShelterResources {
 	public void emptyLitterBox() {
 		litterBox = 0;
 		
+	}
+
+	public void setTickCount() {
+		tickCount += 1;
+		
+	}
+	public int getTickCount() {
+		return tickCount;
 	}
 
 }

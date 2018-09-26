@@ -12,11 +12,11 @@ import org.junit.Test;
 public class VirtualPetShelterTest {
 
 	VirtualPetShelter underTest = new VirtualPetShelter();
-	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 1, 9, 0, false);
-	RoboticCat testRobotCat = new RoboticCat("2", "RobotCatName", 1, 1, 9, 0, false);
-	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 9, 0, 0, 1);
-	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 9, 0, 0, 1);
-	ShelterResources testResources = new ShelterResources();
+	RoboticPet testRobotDog = new RoboticDog("1", "RobotDogName", 1, 1, 9, 0,"description1", false);
+	RoboticCat testRobotCat = new RoboticCat("2", "RobotCatName", 1, 1, 9, 0, "description2",false);
+	OrganicDog testOrganicDog = new OrganicDog("3", "OrganicDogName", 1, 1, 9, 0,"description3", 0, 1);
+	OrganicCat testOrganicCat = new OrganicCat("4", "OrganicCatName", 1, 1, 9, 0,"description4", 0, 1);
+	ShelterResources testResources = new ShelterResources(0);
 
 	@Test
 	public void shouldAddRoboticDogToShelter() {
@@ -39,7 +39,7 @@ public class VirtualPetShelterTest {
 		underTest.intake(testOrganicDog);
 		Collection<VirtualPet> shelteredPets = underTest.getAllPets();
 		assertThat(shelteredPets, containsInAnyOrder(testRobotDog, testOrganicDog));
-		underTest.adopt(testRobotDog);
+		underTest.adopt(testRobotDog.getPetTag());
 		assertThat(shelteredPets, not(contains(testRobotDog)));
 	}
 
